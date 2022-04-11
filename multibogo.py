@@ -3,7 +3,7 @@
 import sys
 import multiprocessing
 import peripherals
-import bogo_components
+from bogo import bogosort
 
 def main(args):
     """Runs the sorting algorithm"""
@@ -25,7 +25,7 @@ def multibogo(arr, numthreads):
     for _ in range(numthreads):
 
         # pass array as tuple because pickles ?? idk
-        process = multiprocessing.Process(target=bogosort, args=(arr,queue))
+        process = multiprocessing.Process(target=bogothread, args=(arr,queue))
         process.start()
         processes.append(process)
 
@@ -41,20 +41,13 @@ def multibogo(arr, numthreads):
     return result
 
 
-def bogosort(arr, queue):
+def bogothread(arr, queue):
     """
     sorts array and queueueues it
     without modifying the passed in array
     """
-    result = list(arr)
-    is_sorted = False
-
-    while not is_sorted:
-        bogo_components.shuffle(result)
-        is_sorted = bogo_components.check_if_ordered(result)
-    # place result in queueueue when it is found
-    queue.put(result)
-
+    result = bogosort(arr)
+    queue.put(result) # place result in queueueue when it is found
 
 if __name__ == '__main__':
     main(sys.argv[1:])
