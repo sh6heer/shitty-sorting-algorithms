@@ -2,8 +2,8 @@
 
 import sys
 import multiprocessing
-import peripherals
-from bogo import bogosort
+import shitsort.peripherals
+from shitsort.bogo import bogosort
 
 def main(args):
     """Runs the sorting algorithm"""
@@ -14,7 +14,7 @@ def main(args):
     print(multibogo(oarray, numthreads))
 
 
-def multibogo(arr, numthreads):
+def multibogosort(arr, numthreads):
     """
     multithreads the bogosort procedure
     without modifying the passed in array

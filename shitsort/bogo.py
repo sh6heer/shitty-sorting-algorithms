@@ -1,8 +1,21 @@
 """
-parts of the bogosort algorithm that
-are reused across files
+classic bogo sort algorithm split into
+parts that are reused across files
 """
 import random
+
+def bogosort(arr):
+    """
+    returns new bogosorted array
+    without modifying passed in one
+    """
+    result = list(arr)
+    is_sorted = False
+    while not is_sorted:
+        shuffle(result)
+        is_sorted = check_if_ordered(result)
+    return result
+
 
 def check_if_ordered(arr):
     """
@@ -24,14 +37,5 @@ def shuffle(arr):
         j = random.randint(0, i)
         arr[i], arr[j] = arr[j], arr[i]
 
-def bogosort(arr):
-    """
-    returns new bogosorted array
-    without modifying passed in one
-    """
-    result = list(arr)
-    is_sorted = False
-    while not is_sorted:
-        shuffle(result)
-        is_sorted = check_if_ordered(result)
-    return result
+if __name__ == '__main__':
+    bogosort(sys.argv[1])
