@@ -1,4 +1,4 @@
-"""This has some funny sorting algorithms"""
+"""runs the bogosort algorithm except multithreaded"""
 
 import sys
 import multiprocessing
@@ -43,7 +43,7 @@ def multibogo(arr, numthreads):
 
 def bogosort(arr, queue):
     """
-    sorts" array and queueueues it
+    sorts array and queueueues it
     without modifying the passed in array
     """
     result = list(arr)
