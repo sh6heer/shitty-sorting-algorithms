@@ -46,15 +46,8 @@ def bogosort(arr, queue):
     sorts array and queueueues it
     without modifying the passed in array
     """
-    result = list(arr)
-    is_sorted = False
-
-    while not is_sorted:
-        bogo_components.shuffle(result)
-        is_sorted = bogo_components.check_if_ordered(result)
-    # place result in queueueue when it is found
-    queue.put(result)
-
+    result = bogo_components.sort_array(arr)
+    queue.put(result) # place result in queueueue when it is found
 
 if __name__ == '__main__':
     main(sys.argv[1:])
