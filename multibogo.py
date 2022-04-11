@@ -1,9 +1,12 @@
+"""This has some funny sorting algorithms"""
+
 import sys
+import multiprocessing
 import peripherals
 import bogo_components
-import multiprocessing
 
 def main(args):
+    """Runs the sorting algorithm"""
     length = int(args[0])
     numthreads = int(args[1])
     oarray = peripherals.generate_array(length)
@@ -11,42 +14,46 @@ def main(args):
     print(multibogo(oarray, numthreads))
 
 
-# multithreads the bogosort procedure
-# without modifying the passed in array
 def multibogo(arr, numthreads):
+    """
+    multithreads the bogosort procedure
+    without modifying the passed in array
+    """
     processes = []
 
-    q = multiprocessing.Queue()
-    for n in range(numthreads):
+    queue = multiprocessing.Queue()
+    for _ in range(numthreads):
 
         # pass array as tuple because pickles ?? idk
-        p = multiprocessing.Process(target=bogosort, args=(arr,q))
-        p.start()
-        processes.append(p)
+        process = multiprocessing.Process(target=bogosort, args=(arr,queue))
+        process.start()
+        processes.append(process)
 
-    # waits for one process to put a result in the queue
-    result = q.get()
+    # waits for one process to put a result in the queueueue
+    result = queue.get()
 
     # then kills all of them
     # idc how you're meant to do it
-    for p in processes:
-        p.terminate()
-        p.join()
+    for process in processes:
+        process.terminate()
+        process.join()
 
     return result
 
 
-# """sorts""" array and queues it
-# without modifying the passed in array
-def bogosort(arr, q):
-    result = [ x for x in arr ]
+def bogosort(arr, queue):
+    """
+    sorts" array and queueueues it
+    without modifying the passed in array
+    """
+    result = list(arr)
     is_sorted = False
 
     while not is_sorted:
         bogo_components.shuffle(result)
         is_sorted = bogo_components.check_if_ordered(result)
-    # place result in queue when it is found
-    q.put(result)
+    # place result in queueueue when it is found
+    queue.put(result)
 
 
 if __name__ == '__main__':
