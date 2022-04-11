@@ -9,7 +9,9 @@ import shitsort
 myarray = [1, 5, 12, 6, 6, 11]
 print(shitsort.bogosort(myarray))
 print(shitsort.multibogosort(myarray, 4)) # uses 4 processes
+print(shitsort.bozosort(myarray))
 
+>>> [1, 5, 6, 6, 11, 12]
 >>> [1, 5, 6, 6, 11, 12]
 >>> [1, 5, 6, 6, 11, 12]
 ```
@@ -29,3 +31,7 @@ returns a new sorted array of `array` using the bogosort algorithm without modif
 <sub>**contributors**: sh6heer, jas-dzied</sub>
 
 <sub>Licensed under GPL GNUv3</sub>
+
+### `bozosort(array)`
+
+returns a new sorted `array` using the bozosort algorithm, without modifying the passed in array
