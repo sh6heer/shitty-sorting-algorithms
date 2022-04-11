@@ -24,7 +24,7 @@ def shuffle(arr):
         j = random.randint(0, i)
         arr[i], arr[j] = arr[j], arr[i]
 
-def sort_array(arr):
+def bogosort(arr):
     """
     returns new bogosorted array
     without modifying passed in one

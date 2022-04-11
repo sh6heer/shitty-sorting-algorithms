@@ -2,7 +2,7 @@
 
 import sys
 import peripherals
-import bogo_components
+from bogo import bogosort
 
 def main(args):
     """
@@ -10,7 +10,7 @@ def main(args):
     """
     length = int(args[0])
     oarray = peripherals.generate_array(length)
-    print(bogo_components.sort_array(oarray))
+    print(bogosort(oarray))
 
 if __name__ == '__main__':
     main(sys.argv[1:])
