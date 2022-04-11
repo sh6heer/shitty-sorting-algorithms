@@ -1,8 +1,8 @@
 """
-classic bogo sort algorithm split into
-parts that are reused across files
+classic bogo sort algorithm
 """
 import random
+from shitsort.peripherals import check_if_ordered
 
 def bogosort(arr):
     """
@@ -15,18 +15,6 @@ def bogosort(arr):
         shuffle(result)
         is_sorted = check_if_ordered(result)
     return result
-
-
-def check_if_ordered(arr):
-    """
-    returns a bool value
-    of whether the passed in array is in order or not
-    """
-    for i in range(len(arr)-1):
-        if arr[i] > arr[i+1]:
-            return False
-    return True
-
 
 def shuffle(arr):
     """
