@@ -1,7 +1,9 @@
-"""Runs the bozo sorting algorithm, which swaps elements randomly"""
+"""
+Runs the bozo sorting algorithm, which swaps elements randomly
+"""
 
 import random
-from shitsort.bogo import check_if_ordered
+from shitsort.peripherals import check_if_ordered
 
 def bozosort(arr):
     """

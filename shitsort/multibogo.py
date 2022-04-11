@@ -1,22 +1,14 @@
-"""runs the bogosort algorithm except multithreaded"""
+"""
+runs the bogosort algorithm except multithreaded
+"""
 
-import sys
 import multiprocessing
 import shitsort.peripherals
 from shitsort.bogo import bogosort
 
-def main(args):
-    """Runs the sorting algorithm"""
-    length = int(args[0])
-    numthreads = int(args[1])
-    oarray = peripherals.generate_array(length)
-
-    print(multibogo(oarray, numthreads))
-
-
 def multibogosort(arr, numthreads):
     """
-    multithreads the bogosort procedure
+    multithreads the bogothread procedure
     without modifying the passed in array
     """
     processes = []
@@ -48,7 +40,3 @@ def bogothread(arr, queue):
     """
     result = bogosort(arr)
     queue.put(result) # place result in queueueue when it is found
-
-if __name__ == '__main__':
-    main(sys.argv[1:])
-    # length of array, number of threads
