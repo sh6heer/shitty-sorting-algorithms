@@ -1,0 +1,11 @@
+LICENSE.txt
+README.md
+setup.py
+shitsort/__init__.py
+shitsort/bogo.py
+shitsort/multibogo.py
+shitsort/peripherals.py
+shitsort.egg-info/PKG-INFO
+shitsort.egg-info/SOURCES.txt
+shitsort.egg-info/dependency_links.txt
+shitsort.egg-info/top_level.txt
